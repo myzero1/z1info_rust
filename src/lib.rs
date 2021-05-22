@@ -48,6 +48,15 @@ use std::io::Write;
 use chrono::{Local};
 use std::process::{Command, Stdio};
 
+/// Add or display additional information
+///
+/// # Examples
+///
+/// ```
+/// z1info_rust::run("z1template");
+/// // z1info_test::run("z1_info:{z1_info},git_info:{git_info},build_time:{build_time}");
+/// ```
+/// 
 pub fn run(template: &str){
     let args :Vec<String> = std::env::args().collect();
     
