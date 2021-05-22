@@ -3,6 +3,8 @@ name = "z1info_rust"
 version = "0.1.0"
 authors = ["myzero1 <myzero1@qq.com>"]
 edition = "2018"
+description = "Add extra information to the binary package through `cargo run [...] z1info=extra_information`."
+license = "MIT OR Apache-2.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
