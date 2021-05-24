@@ -3,6 +3,9 @@
 //! # Use
 //!
 //! ### add code
+//! 
+//! ### add dependencies
+//! - z1info_rust = "0.1.3"
 //!
 //! ```no_run
 //! fn main() {

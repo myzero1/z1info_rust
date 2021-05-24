@@ -4,6 +4,9 @@ Add extra information to the binary package through `cargo run [...] z1info=extr
 
 ## Use
 
+### add dependencies
+- z1info_rust = "0.1.3"
+
 ### add code
 
 ```no_run
