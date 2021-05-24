@@ -15,12 +15,12 @@
 //! `z1info=` must be placed at the end of the command line,`cargo run`will write extra information to tmp file.
 //! - `cargo run p1 p2 z1info=version:1.2.3,compiler:myzero1`
 //! ### build
-//! - cargo build
-//! - OR cargo build --release
+//! - cargo clean && cargo build
+//! - OR cargo clean && cargo build --release
 //!
 //! # Result
 //! ### run command or run `builded binary package`
-//! - cargo run  p1 p2
+//! - cargo clean  && cargo run  p1 p2
 //! - OR run builded binary package
 //!
 //! ### The Result
