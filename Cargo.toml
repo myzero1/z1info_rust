@@ -7,6 +7,7 @@
 authors = ["myzero1 <myzero1@qq.com>"]
 categories = ["development-tools", "development-tools::build-utils"]
 description = "Add extra information to the binary package through `cargo run [...] z1info=extra_information`."
+documentation = "https://docs.rs/z1info_rust/"
 edition = "2018"
 exclude = []
 keywords = ["git", "version", "build", "extra"]
