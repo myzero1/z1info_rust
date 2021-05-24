@@ -21,14 +21,14 @@ fn main() {
 
 ### build
 
-- cargo build
-- OR cargo build --release
+- cargo clean && cargo build
+- OR cargo clean && cargo build --release
 
 ## Result
 
 ### run command or run `builded binary package`
 
-- cargo run p1 p2
+- cargo clean && cargo run p1 p2
 - OR run builded binary package
 
 ### The Result
