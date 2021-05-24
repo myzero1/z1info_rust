@@ -74,7 +74,7 @@ pub fn run(template: &str){
 
         let mut content = str::replace(content_template,"{z1_info}",&args[args.len()-1]);
         content = str::replace(&content[..],"{git_info}",&get_commit_id());
-        content = str::replace(&content[..],"{build_time}",&format!("{}",get_current_timestamp()));
+        content = str::replace(&content[..],"{build_time}",&format!("{}",get_current_time()));
 
         // let mut file = std::fs::File::create("z1info_tmp").unwrap();
         // file.write_all(content.as_bytes()).expect("write z1info failed");
@@ -181,4 +181,32 @@ fn write_to_tmp(content: &str) {
         let mut file = std::fs::File::create("z1info_tmp").unwrap();
         file.write_all(content.as_bytes()).expect("write z1info failed");
     }
+}
+
+fn get_current_time()-> String {
+    let out_str: String;
+
+    if cfg!(target_os = "windows") {
+        let output = Command::new("cmd")
+        .arg("/c")
+        .arg("echo %date:~0,4%-%date:~5,2%-%date:~8,2% %time:~0,2%:%time:~3,2%:%time:~6,2%")
+        .stdout(Stdio::piped())
+        .output()
+        .expect(&format!("cmd exec error!"));
+
+        out_str = format!("{}", String::from_utf8_lossy(&output.stdout));
+    } else {
+       let output= Command::new("sh")
+        .arg("/c")
+        .arg("echo $(date '+%Y-%m-%d %H:%M:%S')")
+        .stdout(Stdio::piped())
+        .output()
+        .expect(&format!("sh exec error!"));
+
+        out_str = format!("{}", String::from_utf8_lossy(&output.stdout));
+    };
+
+    let ret_end = str::replace(&out_str[..],"\n","");
+
+    return ret_end;
 }
