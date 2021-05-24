@@ -145,7 +145,6 @@ fn path_exist(path: &str) -> bool {
 
 fn write_to_tmp(content: &str) {
     let cargo_toml = format!("{:?}", std::fs::read_to_string("Cargo.toml"));
-    let mut file = std::fs::File::create("z1info_tmp").unwrap();
     let mut write_to_crate = true;
 
     let cargo_toml_info: Vec<&str> = cargo_toml.split("z1info_rust = ").collect();
@@ -166,7 +165,7 @@ fn write_to_tmp(content: &str) {
                 let tmp_file = &format!("{}/z1info_rust-{}/z1info_tmp", path.unwrap().path().display(),cargo_toml_info2[1])[..];
 
                 if path_exist(tmp_file){
-                    file = std::fs::File::create(tmp_file).unwrap();
+                    let mut file = std::fs::File::create(tmp_file).unwrap();
                     file.write_all(content.as_bytes()).expect("write z1info failed");
 
                     write_to_crate = false;
@@ -176,6 +175,7 @@ fn write_to_tmp(content: &str) {
     }
 
     if write_to_crate{
+        let mut file = std::fs::File::create("z1info_tmp").unwrap();
         file.write_all(content.as_bytes()).expect("write z1info failed");
     }
 }
